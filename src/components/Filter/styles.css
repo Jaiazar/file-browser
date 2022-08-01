@@ -1,0 +1,32 @@
+nav{
+  height: 10vh;
+  padding: .2rem;
+  background-color: rgb(198, 28, 39);
+}
+
+nav *{
+  display: inline-block;
+  margin: .5rem;
+}
+
+nav div{
+  border: 2px solid black;
+  background-color: rgb(244, 101, 101);
+}
+
+nav div:hover{
+  background-color: rgba(102, 5, 5);
+  color: rgb(255, 255, 255);
+}
+
+.sort div{
+  font-size: 1.5rem;
+  font-weight:bold;
+  padding: 5px 15px;
+  margin: auto .5rem;
+}
+
+.view{
+  font-weight: bolder;
+  padding: .5rem;
+}

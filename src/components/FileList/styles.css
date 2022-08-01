@@ -1,0 +1,47 @@
+.file-list{
+  text-align: left;
+  border-left: .5rem solid white;
+  border-right: .5rem solid white;
+}
+
+.toggle-view{
+  height: 80vh;
+  overflow: auto;
+}
+
+.file-list .file{
+  display: block;
+  margin: 1rem 1.5rem;
+}
+
+.list-view li{
+  font-size: 1.5rem;
+  padding: 1rem;
+  display: flex;
+  align-items: baseline; 
+}
+
+.list-view li div{
+  padding-left: .5rem;
+}
+
+.list-view li:hover{
+  background-color: rgb(197, 176, 212); 
+}
+
+.grid-view{
+  text-align: center;
+  margin: 1rem 2rem;
+  font-size: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.grid-item{
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.grid-item:hover{
+  background-color: rgb(197, 176, 212);
+}
