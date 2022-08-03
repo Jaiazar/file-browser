@@ -3,7 +3,7 @@ import { SearchBox } from "./SearchBox/searchBox";
 import ViewButton from "./FileViewButton/ViewButton";
 import './styles.css';
 
-const Filter = ({gridView, listView}) => {
+const Filter = ({gridView, listView, handleSearch}) => {
   
   return(
     <nav className="filter">
@@ -36,8 +36,9 @@ const Filter = ({gridView, listView}) => {
         handleView={gridView}
       />
       
-      <SearchBox placeholder='search'
-        handleChange={e=>console.log(e.target.value)}
+      <SearchBox 
+        placeholder='search'
+        handleSearch={handleSearch}
       />
     </nav>
   );

@@ -39,11 +39,11 @@
 
 export const myfiles = [
   {
-    name:"file3",
+    name:"song3",
     type:"audio"
   },
   {
-    name:"file4",
+    name:"video4",
     type:"video"
   },
   {
@@ -51,7 +51,7 @@ export const myfiles = [
     type:"audio"
   },
   {
-    name:"file6",
+    name:"video6",
     type:"video"
   },
   {
@@ -59,7 +59,7 @@ export const myfiles = [
     type:"video"
   },
   {
-    name:"file2",
+    name:"song2",
     type:"audio"
   },
   {
@@ -67,7 +67,7 @@ export const myfiles = [
     type:"video"
   },
   {
-    name:"file9",
+    name:"carnaval-1",
     type:"video"
   },
   {
@@ -75,7 +75,7 @@ export const myfiles = [
     type:"audio"
   },
   {
-    name:"file0",
+    name:"carnaval-2",
     type:"video"
   }
 ]

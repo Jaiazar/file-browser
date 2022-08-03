@@ -6,8 +6,7 @@ import FileList from './components/FileList/fileList';
 import FilePreview from './components/FilePreview/filePreview'
 import { myfiles } from './myfiles';
 
-function App() {
-
+// Folders and files to show
   const items = myfiles.map(
     file => 
     {
@@ -19,21 +18,37 @@ function App() {
     }
   );
 
+function App() {
+  // File view configuration
   const [fileView, setFileView] = useState(true);
+
   const gridView = () => setFileView(false);
   const listView = () => setFileView(true);
 
+  //Search box configuration
+  const [searchField, setSearchField]=useState("");
+
+  const filteredFiles = items.filter(item =>
+   item.props.children.includes(searchField));
+  
+  const handleSearch = (e) => {
+    setSearchField(e.target.value);
+  }
+
+  // Main code
   return (
     <div className="App">
       <Filter 
         gridView={gridView} 
         listView={listView}
+        handleSearch={handleSearch}
       />
       <section className='directory'>
         <FolderList/>
         <FileList 
           fileView={fileView}
-          items={items}
+          // items={items}
+          items={filteredFiles}
         />
         <FilePreview/>
       </section>
