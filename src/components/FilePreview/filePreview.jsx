@@ -1,20 +1,19 @@
 import React from "react";
 import './styles.css';
 
-const FilePreview = () => {
-  let type="audio";
+const FilePreview = ({info}) => {
   return (
     <div className="file-preview">
       <div className="big-icon">
-        <i className={"fa-regular fa-file-"+type}></i>
+        <i className={ "fa-regular fa-file-" + info.type }></i>
       </div>
-      <ol className="file-info">
-        <li>Name: Don't stop me now!</li>
-        <li>Type: .mp3</li>
-        <li>Size: 180KB</li>
-        <li>Created: 12-5-2018</li>
-        <li>Modified: 13-4-2020</li>
-      </ol>
+      <ul className="file-info">
+        <li>Name: {info.name}</li>
+        <li>Type: {info.type}</li>
+        <li>Size: {info.size}</li>
+        <li>Created: {info.created}</li>
+        <li>Modified: {info.modified}</li>
+      </ul>
     </div>
   );
 }

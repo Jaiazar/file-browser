@@ -1,32 +1,44 @@
-nav{
+.filter{
+  display: flex;
   height: 10vh;
-  padding: .2rem;
-  background-color: rgb(198, 28, 39);
+  padding: 0 2vw;
+  background-color: rgb(135, 15, 23);
 }
 
-nav *{
-  display: inline-block;
-  margin: .5rem;
+.filter div{
+  display: flex;
+  border: 1px solid rgb(0, 0, 0);
+  background-color: rgb(232, 127, 127);
+  font-size: 4vh;
+  font-weight: bolder;
+  margin: 1vh 1vw;
+  width: 8vh;
+  height: 8vh;
+  justify-content: center;
+  align-items: center;
 }
 
-nav div{
-  border: 2px solid black;
-  background-color: rgb(244, 101, 101);
+.filter div i{
+  display: flex;
 }
 
-nav div:hover{
-  background-color: rgba(102, 5, 5);
+.filter div:hover{
+  background-color: rgb(87, 74, 190);
   color: rgb(255, 255, 255);
 }
 
-.sort div{
-  font-size: 1.5rem;
-  font-weight:bold;
-  padding: 5px 15px;
-  margin: auto .5rem;
+.sort-options, .search {
+  border: none;
+  outline: none;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 2.5vh;
+  margin: 2vh;
+  padding: 1vh;
+  width: 10vw;
+  height: 6vh;
 }
 
-.view{
-  font-weight: bolder;
-  padding: .5rem;
+.sort-options:hover, .search:hover{
+  border: 2px solid grey;
 }
+

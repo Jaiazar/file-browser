@@ -3,11 +3,15 @@ import './styles.css';
 import FilePath from "./FilePath/filePath";
 import ToggleView from "./FileView/ToggleView";
 
-const FileList = ({fileView, items}) => {
+const FileList = ({ fileView, items, handlePreview }) => {
   return (
     <div className="file-list">
       <FilePath />
-      <ToggleView fileView={fileView} items={items}/>
+      <ToggleView
+        fileView={fileView} 
+        items={items} 
+        handlePreview={handlePreview}
+      />
     </div>
   );
 }

@@ -1,44 +1,18 @@
-import React/*, { useState }*/ from 'react';
+import React from 'react';
 import ListView from "./ListView";
 import GridView from "./GridView";
-// import { myfiles } from '../../../myfiles';
 
-const ToggleView = ({ fileView, items }) => {
-  
-  // const items = myfiles.map(
-  //   file => 
-  //   {
-  //     return (
-  //       <div className="file-name">
-  //         {file.name}
-  //       </div>
-  //     )
-  //   }
-  // );
+const ToggleView = ({ fileView, items, handlePreview }) => {
   
   return (
     <div className="toggle-view">
-      {fileView ? <ListView items={items} /> : <GridView items={items} />}
+      {
+        fileView 
+        ? <ListView items={items} handlePreview={handlePreview} /> 
+        : <GridView items={items} handlePreview={handlePreview} />
+      }
     </div>
   );
 }
-
-// const ToggleView = ({ items=[] }) => {
-//   const [fileView, setFileView] = useState(<ListView items={items} />);
-  
-//   return (
-//     <div className="toggle-view">
-//       <button onClick={()=>{
-//         setFileView(<ListView items={items} />)
-//         }
-//       } >List</button>
-//       <button onClick={()=>{
-//         setFileView(<GridView items={items} />)
-//         }
-//       } >Grid</button>
-//       {fileView}
-//     </div>
-//   );
-// }
 
 export default ToggleView;

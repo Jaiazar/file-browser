@@ -24,13 +24,14 @@
 
 /* width */
 ::-webkit-scrollbar {
-  width: 15px;
+  width: 1rem;
+  max-height: fit-content;
 }
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: rgb(156, 180, 204); 
-  border-radius: 10px;
+  border-radius: .5rem;
 }
 
 /* Handle on hover */

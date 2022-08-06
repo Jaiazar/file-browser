@@ -14,18 +14,19 @@
   margin: 1rem 1.5rem;
 }
 
-.list-view li{
-  font-size: 1.5rem;
-  padding: 1rem;
+.list-item{
+  font-size: 2rem;
+  padding: 1.5rem;
   display: flex;
-  align-items: baseline; 
+  align-items: baseline;
+  cursor: pointer;
 }
 
-.list-view li div{
-  padding-left: .5rem;
+.list-item div{
+  padding-left: 1rem;
 }
 
-.list-view li:hover{
+.list-item:hover{
   background-color: rgb(197, 176, 212); 
 }
 
@@ -40,6 +41,12 @@
 .grid-item{
   margin: 1rem;
   padding: 1rem;
+  cursor: pointer;
+}
+
+.grid-item div{
+  width:10rem;
+  font-size: 2rem;
 }
 
 .grid-item:hover{
