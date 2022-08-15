@@ -1,3 +1,14 @@
+# URL TO THE APPLICATION
+
+[File browser](https://f1l3-browser.herokuapp.com/)
+
+# Points for improvement
+
+-	Integrate file path.
+-	Clicking on folders/files names or icons doesn’t trigger actions.
+-	There’s not “sort by” button (it’s sorted with choosing on the select element).
+-	Styles
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
