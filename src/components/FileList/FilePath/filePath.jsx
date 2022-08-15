@@ -1,10 +1,10 @@
 import React from "react";
 import './styles.css';
 
-const FilePath = () => {
+const FilePath = ({folder, subfolder, file}) => {
   return (
     <div className="file-path">
-      Folder1 -- Folder2 -- Image.jpg
+      FILE LIST
     </div>
   );
 }

@@ -9,12 +9,11 @@
 
 .w3-container{
   padding: 0;
-  display: flex;
-  flex-direction: column;
 }
 
 .subfolder{
   padding: 1rem 2.5rem;
+  border: none;
 }
 
 .subfolder:hover{

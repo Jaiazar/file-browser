@@ -3,59 +3,170 @@ import './App.css';
 import Filter from './components/Filter/filter';
 import FolderList from './components/FolderList/folderList';
 import FileList from './components/FileList/fileList';
-import FilePreview from './components/FilePreview/filePreview'
-import { myfiles } from './myfiles';
-
-// Folders and files to show
-  const items = myfiles.map(
-    file => 
-    {
-      return (
-        <div 
-          className="file-data" 
-          name={file.name} 
-          type={file.type}
-          capacity={file.size} // For some reason the word "size" is not recognized
-          created={file.created}
-          modified={file.modified}
-        >
-          {file.name}
-        </div>
-      )
-    }
-  );
-
-  // const a = []
-  // items.forEach(item => {
-  //   a.push(item.props)
-  // } 
-  // );
-
-  // console.log(items);
-  // console.log(a);
+import FilePreview from './components/FilePreview/filePreview';
+import {myFiles1} from "./myFiles1";
 
 function App() {
+
+  // Folders list configuration
+  const [subFolderFiles, setSubFolderFiles] = useState([]);
+
+  const handleSubfolder = (e) => {
+    const folderData = myFiles1.filter((folder)=> folder.name === e.target.getAttribute("parent"));
+    const contentFolder = folderData[0].content.map((folder)=>folder);
+    const subFolderData = contentFolder.filter((subFolder)=>subFolder.name === e.target.value);
+    const contentSubFolder = subFolderData[0].content.map((subFolder)=>subFolder);
+    setSubFolderFiles(contentSubFolder);
+  };
+
   // Sort configuration
-  
+
   const [sortFiles, setSortFiles] = useState(true);
   const sortUp = () => setSortFiles(true);
   const sortDown = () => setSortFiles(false);
 
-  // const [sortFiles, setSortFiles] = useState()
-  // const sortUp = setSortFiles(()=>items.sort);
-  // const sortDown = setSortFiles(()=>items.reverse);
+  const [sortBy, setSortBy] = useState("name");
+  const handleSelect = (e) => setSortBy(e.target.value);
 
-  // File view configuration
+//MUST HAVE OTHER WAY TO DO IT!!!!!!!!!!!
+
+  const filter = (property) => {
+    switch(property){
+      case "name":
+        if(sortFiles){
+          subFolderFiles.sort((a,b)=>{
+            if (a.name > b.name) {
+              return 1;
+            }
+            if (a.name < b.name) {
+              return -1;
+            }
+            return 0;
+          })
+        }else{
+          subFolderFiles.sort((a,b)=>{
+            if (a.name < b.name) {
+              return 1;
+            }
+            if (a.name > b.name) {
+              return -1;
+            }
+            return 0;
+          })
+        }
+      break;
+      case "type":
+        if(sortFiles){
+          subFolderFiles.sort((a,b)=>{
+            if (a.type > b.type) {
+              return 1;
+            }
+            if (a.type < b.type) {
+              return -1;
+            }
+            return 0;
+          })
+        }else{
+          subFolderFiles.sort((a,b)=>{
+            if (a.type < b.type) {
+              return 1;
+            }
+            if (a.type > b.type) {
+              return -1;
+            }
+            return 0;
+          })
+        }
+      break;
+      case "size":
+        if(sortFiles){
+          subFolderFiles.sort((a,b)=>{
+            if (a.size > b.size) {
+              return 1;
+            }
+            if (a.size < b.size) {
+              return -1;
+            }
+            return 0;
+          })
+        }else{
+          subFolderFiles.sort((a,b)=>{
+            if (a.size < b.size) {
+              return 1;
+            }
+            if (a.size > b.size) {
+              return -1;
+            }
+            return 0;
+          })
+        }
+      break;
+      case "created":
+        if(sortFiles){
+          subFolderFiles.sort((a,b)=>{
+            if (a.created > b.created) {
+              return 1;
+            }
+            if (a.created < b.created) {
+              return -1;
+            }
+            return 0;
+          })
+        }else{
+          subFolderFiles.sort((a,b)=>{
+            if (a.created < b.created) {
+              return 1;
+            }
+            if (a.created > b.created) {
+              return -1;
+            }
+            return 0;
+          })
+        }
+      break;
+      case "modified":
+        if(sortFiles){
+          subFolderFiles.sort((a,b)=>{
+            if (a.modified > b.modified) {
+              return 1;
+            }
+            if (a.modified < b.modified) {
+              return -1;
+            }
+            return 0;
+          })
+        }else{
+          subFolderFiles.sort((a,b)=>{
+            if (a.modified < b.modified) {
+              return 1;
+            }
+            if (a.modified > b.modified) {
+              return -1;
+            }
+            return 0;
+          })
+        }
+      break;
+      default:
+        return;
+    }
+  }
+
+  const handleClick = filter(sortBy);
+    
+// File view configuration
+
   const [fileView, setFileView] = useState(true);
 
   const gridView = () => setFileView(false);
   const listView = () => setFileView(true);
 
   //Search box configuration
+
   const [searchField, setSearchField]=useState("");
 
-  const filteredFiles = items.filter(item =>
-   item.props.name.includes(searchField));
+  const filteredFiles = subFolderFiles.filter(file =>
+   file.name.includes(searchField));
   
   const handleSearch = (e) => {
     setSearchField(e.target.value);
@@ -73,10 +184,7 @@ function App() {
         created: e.target.childNodes[1].attributes[4].nodeValue,        
         modified: e.target.childNodes[1].attributes[5].nodeValue,        
       }
-      )
-    // console.log(e.target.childNodes[1].attributes[1].nodeValue);
-    // console.log(e.target.childNodes[1].attributes[2].nodeValue);
-    console.log(e.target)
+    )
   }
 
   // Main code
@@ -87,12 +195,17 @@ function App() {
         sortDown={sortDown}
         gridView={gridView} 
         listView={listView}
+        handleSelect={handleSelect}
+        handleClick={handleClick}
         handleSearch={handleSearch}
       />
       <section className='directory'>
-        <FolderList/>
+        <FolderList 
+          items={myFiles1}
+          handleSubfolder={handleSubfolder}
+        />
+
         <FileList 
-          sortFiles={sortFiles}
           fileView={fileView}
           items={filteredFiles}
           handlePreview={handlePreview}

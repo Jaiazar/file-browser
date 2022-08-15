@@ -3,7 +3,7 @@ import { SearchBox } from "./SearchBox/searchBox";
 import ViewButton from "./FileViewButton/ViewButton";
 import './styles.css';
 
-const Filter = ({sortUp, sortDown, gridView, listView, handleSelect, handleClick, handleSearch}) => {
+const Filter = ({sortUp, sortDown, gridView, listView, handleSelect, handleSearch}) => {
 
   return(
     <nav className="filter">
@@ -31,11 +31,11 @@ const Filter = ({sortUp, sortDown, gridView, listView, handleSelect, handleClick
         
         {/* Sort view button */}
 
-        <ViewButton 
+        {/* <ViewButton 
           className="sort-by" 
           icon="fa-solid fa-sort" 
           handleView={handleClick}
-        />
+        /> */}
 
       {/* File view buttons */}
 

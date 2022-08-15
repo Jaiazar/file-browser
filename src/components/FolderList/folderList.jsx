@@ -1,9 +1,9 @@
 import React /*, {useState}*/ from "react";
 import './styles.css';
-import { folders } from "../../folders";
+// import { folders } from "../../folders";
+// import {folFil} from "../../folFil";
 
-const FolderList = () => {
-  // const [isOpen, setIsOpen] = useState(false);
+const FolderList = ({items, handleSubfolder}) => {
   
   const handleAccordion = (e) => {
     if(e.target.nextElementSibling.style.display === "none"){
@@ -17,24 +17,36 @@ const FolderList = () => {
 
   return(
     <div className="folder-list">
-      {folders.map(
+      {items.map(
         folder => {
         return (
-          <div key={folder.key}>
+          <div key={folder.id}>
             <button onClick={(e) => handleAccordion(e)} className="w3-btn w3-block w3-black w3-left-align"> 
-              <i className="fa-solid fa-folder-open"></i> {folder.folder}
+              <i className="fa-solid fa-folder-open"></i> {folder.name}
             </button>
-            <div className="w3-container">
-              <div className="subfolder"><i className="fa-solid fa-folder"> Folder inside folder </i></div>
-              <div className="subfolder"><i className="fa-solid fa-folder"> Folder inside folder </i></div>
-              <div className="subfolder"><i className="fa-solid fa-folder"> Folder inside folder </i></div>
+            <div className="w3-container" value={folder.name}>
+              {folder.content.map(
+                subfolder => {
+                  return (
+                      <button 
+                        className="w3-btn w3-block w3-left-align subfolder"
+                        value={subfolder.name} 
+                        key={subfolder.id}
+                        parent={folder.name}
+                        onClick={handleSubfolder}
+                      >
+                        <i className="fa-solid fa-folder">
+                        &nbsp;&nbsp;{subfolder.name}
+                        </i>
+                      </button>
+                  )
+                }
+              )}
             </div>
           </div>
           )
         })
       }
-      
-
     </div>
   );
 }
